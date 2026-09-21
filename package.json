@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "license": "Apache-2.0",
-  "description": "PurposeMesh — Purpose-bound access, enforced everywhere.",
+  "description": "PurposeMesh \u2014 Purpose-bound access, enforced everywhere.",
   "author": "Manish Kumar",
   "homepage": "https://mkbhardwas12.github.io/purposemesh/",
   "repository": {
@@ -33,14 +33,14 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "npm run build -w @cca/core && concurrently -n api,web -c blue,green \"npm run dev -w @cca/api\" \"npm run dev -w @cca/web\"",
-    "start": "npm run start -w @cca/api",
+    "dev": "node api.js && npm run build -w @cca/core && concurrently -n api,web -c blue,green \"npm run dev -w @cca/api\" \"npm run dev -w @cca/web\"",
+    "start": "node api.js && npm run start -w @cca/api",
     "test": "npm run build -w @cca/core && npm run test --workspaces --if-present",
     "test:core": "npm run test -w @cca/core",
     "test:api": "npm run build -w @cca/core && npm run test -w @cca/api",
     "test:web": "npm run test -w @cca/web",
     "typecheck": "npm run build -w @cca/core && npm run typecheck --workspaces --if-present",
-    "build": "npm run build --workspaces --if-present",
+    "build": "node api.js && npm run build --workspaces --if-present",
     "ops:control-plane": "npm run build -w @cca/api && node apps/api/dist/control-plane-ops-cli.js",
     "preflight": "npm run typecheck && npm test && npm run build"
   },
